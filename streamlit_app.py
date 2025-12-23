@@ -151,10 +151,7 @@ class QwenVLLMChatbotWithRAG:
         start_time = time.time()
         
         try:
-            # 1. 빈 문자열은 토큰이 없어서 에러가 남 -> "dummy"라는 글자를 넣어 2개로 만듦
-            # 2. batch_size를 명시적으로 지정해서 배치 처리를 강제함
-            fake_batch = [query, "dummy"]
-            query_embeddings = self.embedding_model.encode(fake_batch, batch_size=2)['dense_vecs']
+            query_embeddings = self.embedding_model.encode(query, batch_size=2)['dense_vecs']
             
             # 3. 결과에서 우리가 필요한 첫 번째(진짜 질문) 결과만 가져옴
             query_embedding = query_embeddings[0]
