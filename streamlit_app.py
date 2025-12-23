@@ -151,7 +151,7 @@ class QwenVLLMChatbotWithRAG:
         start_time = time.time()
         
         try:
-            query_embeddings = self.embedding_model.encode(query, batch_size=2)['dense_vecs']
+            query_embeddings = self.embedding_model.encode(query, batch_size=1)['dense_vecs']
             
             # 3. 결과에서 우리가 필요한 첫 번째(진짜 질문) 결과만 가져옴
             query_embedding = query_embeddings[0]
